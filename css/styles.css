@@ -915,7 +915,7 @@ blockquote cite {
     font-size: 0.75rem;
 }
 
-.form-group input,
+.form-group input:not([type="checkbox"]):not([type="radio"]),
 .form-group select,
 .form-group textarea {
     width: 100%;
@@ -934,7 +934,7 @@ blockquote cite {
     border-radius: 0;
 }
 
-.form-group input:focus,
+.form-group input:not([type="checkbox"]):not([type="radio"]):focus,
 .form-group select:focus,
 .form-group textarea:focus {
     border-bottom-color: var(--color-gold);
@@ -978,16 +978,16 @@ blockquote cite {
     letter-spacing: 0;
 }
 
-.q-checkbox input,
-.q-radio input {
+.q-checkbox input[type="checkbox"],
+.q-radio input[type="radio"] {
     width: 18px;
     height: 18px;
     padding: 0;
-    border: 1px solid var(--color-light-gray);
-    border-bottom: 1px solid var(--color-light-gray);
     cursor: pointer;
     accent-color: var(--color-gold);
     flex-shrink: 0;
+    appearance: auto;
+    -webkit-appearance: auto;
 }
 
 /* Navigation Buttons */
