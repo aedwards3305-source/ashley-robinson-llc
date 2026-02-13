@@ -657,6 +657,12 @@ blockquote cite {
     display: block;
 }
 
+.about-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-dark) 100%);
+}
+
 .about-text p {
     font-size: 1.05rem;
     font-weight: 300;
@@ -750,6 +756,7 @@ blockquote cite {
 /* ---------- Contact Page ---------- */
 .contact-section {
     background-color: var(--color-off-white);
+    padding-top: 160px;
 }
 
 .contact-grid {
