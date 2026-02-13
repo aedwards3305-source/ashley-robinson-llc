@@ -204,6 +204,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ---- FAQ Accordion ----
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+            // Close all other answers in the same category
+            const category = button.closest('.faq-category');
+            category.querySelectorAll('.faq-question').forEach(otherBtn => {
+                if (otherBtn !== button) {
+                    otherBtn.setAttribute('aria-expanded', 'false');
+                    const otherAnswer = otherBtn.nextElementSibling;
+                    otherAnswer.style.maxHeight = null;
+                    otherAnswer.classList.remove('open');
+                }
+            });
+
+            // Toggle current
+            if (isOpen) {
+                button.setAttribute('aria-expanded', 'false');
+                answer.style.maxHeight = null;
+                answer.classList.remove('open');
+            } else {
+                button.setAttribute('aria-expanded', 'true');
+                answer.style.maxHeight = answer.scrollHeight + 24 + 'px';
+                answer.classList.add('open');
+            }
+        });
+    });
+
     // ---- Parallax-style subtle movement on hero ----
     const hero = document.querySelector('.hero');
     if (hero) {
