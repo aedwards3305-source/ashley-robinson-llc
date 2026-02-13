@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nInitial commit: Ashley Robinson LLC website\n\nComplete static website with Home, About, and Contact pages featuring\nluxury design system with Playfair Display + Montserrat typography,\ngold accent color palette, scroll animations, and responsive layout.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(gh repo create:*)",
+      "Bash(where:*)",
+      "Bash(npx vercel:*)",
+      "Bash(vercel:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nRemove LLC from branding, enlarge footer logo, remove location info\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd real images to consulting, suit design, and wedding sections\n\n- Business & Vision Consulting photo in consulting section\n- Custom Suit Design photo in suit design section  \n- Wedding Suit photo as cinematic background for wedding section\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nRename image files to URL-safe names \\(fix broken images\\)\n\nSpaces and & in filenames caused broken image paths on deployment.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
