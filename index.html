@@ -4,12 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashley Robinson | Strategic Consulting & Custom Suit Design</title>
-    <meta name="description" content="Ashley Robinson — Elevating how you show up in business and in life through strategic consulting and custom suit design.">
+    <meta name="description" content="Ashley Robinson offers strategic consulting, bespoke custom suit design, and wedding styling coordination. Elevate your business and personal presentation with clarity and confidence.">
+    <meta name="author" content="Ashley Robinson">
+    <link rel="canonical" href="https://ashley-robinson-llc.vercel.app/">
     <link rel="icon" type="image/png" href="Pictures/ar-logo.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ashley Robinson">
+    <meta property="og:title" content="Ashley Robinson | Strategic Consulting & Custom Suit Design">
+    <meta property="og:description" content="Elevating how you show up in business and in life through strategic consulting, custom suit design, and wedding styling coordination.">
+    <meta property="og:url" content="https://ashley-robinson-llc.vercel.app/">
+    <meta property="og:image" content="https://ashley-robinson-llc.vercel.app/Pictures/ar-logo.png">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Ashley Robinson | Strategic Consulting & Custom Suit Design">
+    <meta name="twitter:description" content="Elevating how you show up in business and in life through strategic consulting, custom suit design, and wedding styling.">
+    <meta name="twitter:image" content="https://ashley-robinson-llc.vercel.app/Pictures/ar-logo.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Ashley Robinson",
+        "description": "Strategic consulting, custom suit design, and wedding styling coordination. Elevating how you show up in business and in life.",
+        "url": "https://ashley-robinson-llc.vercel.app/",
+        "logo": "https://ashley-robinson-llc.vercel.app/Pictures/ar-logo.png",
+        "image": "https://ashley-robinson-llc.vercel.app/Pictures/ar-logo.png",
+        "email": "info@ashleyrobinson.com",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Strategic Consulting",
+                        "description": "Business strategy sessions, brand clarity and positioning, offer development, vision mapping, and accountability support for entrepreneurs and small business owners."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Suit Design",
+                        "description": "Bespoke suit design for men and women including wedding suits, corporate and executive suits, special occasion designs, and group fittings."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Wedding Styling Coordination",
+                        "description": "Wedding suit coordination and styling for groom and groomsmen, including color and fabric consultation and accessory guidance."
+                    }
+                }
+            ]
+        },
+        "knowsAbout": ["Business Strategy", "Brand Development", "Custom Suits", "Bespoke Tailoring", "Wedding Styling", "Personal Presentation"],
+        "sameAs": []
+    }
+    </script>
 </head>
 <body>
 
@@ -17,7 +81,7 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
-                <img src="Pictures/ar-logo.png" alt="Ashley Robinson" class="logo-img">
+                <img src="Pictures/ar-logo.png" alt="Ashley Robinson — Strategic Consulting & Custom Suit Design" class="logo-img">
             </a>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
@@ -34,6 +98,8 @@
             </button>
         </div>
     </nav>
+
+    <main>
 
     <!-- Hero Section -->
     <section class="hero" style="background-image: url('Pictures/wedding-suit.png');">
@@ -60,7 +126,7 @@
             <div class="services-grid">
                 <div class="services-image reveal reveal-left">
                     <div class="image-frame">
-                        <img src="Pictures/business-vision-consulting.png" alt="Business and Vision Consulting" class="services-img">
+                        <img src="Pictures/business-vision-consulting.png" alt="Man in charcoal three-piece suit representing Ashley Robinson's business and vision consulting services" class="services-img">
                     </div>
                 </div>
                 <div class="services-content reveal reveal-right">
@@ -104,7 +170,7 @@
             <div class="services-grid reverse">
                 <div class="services-image reveal reveal-right">
                     <div class="image-frame">
-                        <img src="Pictures/custom-suit-design.png" alt="Custom Suit Design" class="services-img">
+                        <img src="Pictures/custom-suit-design.png" alt="Woman in tailored navy suit showcasing Ashley Robinson's custom bespoke suit design" class="services-img">
                     </div>
                 </div>
                 <div class="services-content reveal reveal-left">
@@ -180,21 +246,23 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <img src="Pictures/ar-logo.png" alt="Ashley Robinson" class="footer-logo">
+                    <img src="Pictures/ar-logo.png" alt="Ashley Robinson logo" class="footer-logo">
                     <p class="footer-tagline">Elevating How You Show Up &mdash;<br>In Business and In Life.</p>
                     <div class="footer-social">
-                        <a href="#" class="social-link" aria-label="Instagram">
+                        <a href="#" class="social-link" aria-label="Follow Ashley Robinson on Instagram">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
                         </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
+                        <a href="#" class="social-link" aria-label="Connect with Ashley Robinson on LinkedIn">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 11v6M7 7v.01M11 11v6m0-3a3 3 0 016 0v3"/></svg>
                         </a>
-                        <a href="#" class="social-link" aria-label="Facebook">
+                        <a href="#" class="social-link" aria-label="Follow Ashley Robinson on Facebook">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
                         </a>
                     </div>

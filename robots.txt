@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ashley-robinson-llc.vercel.app/sitemap.xml
