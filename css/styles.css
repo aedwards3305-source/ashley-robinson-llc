@@ -519,27 +519,14 @@ ul {
     z-index: 0;
 }
 
-.image-placeholder {
+.services-img {
     position: relative;
     z-index: 1;
+    width: 100%;
     aspect-ratio: 4/5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-style: italic;
-    letter-spacing: 1px;
-}
-
-.consulting-placeholder {
-    background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-dark) 100%);
-    color: var(--color-gold-light);
-}
-
-.suits-placeholder {
-    background: linear-gradient(135deg, #2a2520 0%, var(--color-dark) 100%);
-    color: var(--color-gold-light);
+    object-fit: cover;
+    object-position: top center;
+    display: block;
 }
 
 .services-description {
@@ -588,10 +575,21 @@ ul {
 .wedding-section {
     position: relative;
     background-color: var(--color-dark);
-    background-image:
-        linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(42, 37, 32, 0.9) 50%, rgba(10, 10, 10, 0.95) 100%);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
     padding: var(--section-padding);
     text-align: center;
+}
+
+.wedding-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 10, 10, 0.75);
+    z-index: 1;
 }
 
 .wedding-section::before {
