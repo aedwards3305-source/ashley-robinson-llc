@@ -1,5 +1,5 @@
 /* ============================================
-   ASHLEY ROBINSON LLC — Main JavaScript
+   ASHLEY ROBINSON — Main JavaScript
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -97,29 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ---- Contact Form Submission ----
-    const contactForm = document.getElementById('contact-form');
-    const formSuccess = document.getElementById('form-success');
-
-    if (contactForm && formSuccess) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Collect form data
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData);
-
-            // Log form data (replace with actual form handler / API endpoint)
-            console.log('Form submitted:', data);
-
-            // Show success message
-            contactForm.style.display = 'none';
-            formSuccess.classList.add('show');
-
-            // Scroll to success message
-            formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-    }
+    // ---- Contact Form: formsubmit.co handles submission natively ----
 
     // ---- Parallax-style subtle movement on hero ----
     const hero = document.querySelector('.hero');

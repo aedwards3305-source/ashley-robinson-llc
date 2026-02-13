@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Ashley Robinson</title>
     <meta name="description" content="Get in touch with Ashley Robinson for strategic consulting, custom suit design, or wedding styling coordination.">
+    <link rel="icon" type="image/png" href="Pictures/ar-logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -62,13 +63,17 @@
                             </div>
                             <div>
                                 <h4>Email</h4>
-                                <p>info@ashleyrobinsonllc.com</p>
+                                <p>info@ashleyrobinson.com</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="contact-form-wrapper reveal reveal-right">
-                    <form class="contact-form" id="contact-form">
+                    <form class="contact-form" id="contact-form" action="https://formsubmit.co/info@ashleyrobinson.com" method="POST">
+                        <input type="hidden" name="_subject" value="New inquiry from Ashley Robinson website">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="">
+                        <input type="text" name="_honey" style="display:none">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required placeholder="Your full name">
@@ -92,15 +97,6 @@
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                     </form>
-                    <div class="form-success" id="form-success">
-                        <div class="success-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 13l4 4L19 7"/>
-                            </svg>
-                        </div>
-                        <h3>Message Sent</h3>
-                        <p>Thank you for reaching out. I'll be in touch within 48 hours.</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -113,6 +109,17 @@
                 <div class="footer-brand">
                     <img src="Pictures/ar-logo.png" alt="Ashley Robinson" class="footer-logo">
                     <p class="footer-tagline">Elevating How You Show Up &mdash;<br>In Business and In Life.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 11v6M7 7v.01M11 11v6m0-3a3 3 0 016 0v3"/></svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h4>Navigation</h4>

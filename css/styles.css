@@ -1,11 +1,10 @@
 /* ============================================
-   ASHLEY ROBINSON LLC — Design System
+   ASHLEY ROBINSON — Design System
    Elevated. Polished. Intentional.
    ============================================ */
 
 /* ---------- CSS Variables ---------- */
 :root {
-    /* Color Palette — Neutral luxury tones */
     --color-black: #0a0a0a;
     --color-dark: #1a1a1a;
     --color-charcoal: #2d2d2d;
@@ -18,20 +17,15 @@
     --color-gold-light: #d4c7a9;
     --color-gold-dark: #a89872;
 
-    /* Typography */
     --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --font-body: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
 
-    /* Spacing */
     --section-padding: 120px 0;
-    --section-padding-mobile: 80px 0;
     --container-width: 1200px;
     --container-padding: 0 40px;
 
-    /* Transitions */
     --transition-fast: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-medium: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ---------- Reset & Base ---------- */
@@ -142,7 +136,6 @@ ul {
     border: none;
     cursor: pointer;
     transition: var(--transition-fast);
-    position: relative;
 }
 
 .btn-primary {
@@ -306,22 +299,20 @@ ul {
     align-items: center;
     justify-content: center;
     background-color: var(--color-black);
-    background-image:
-        linear-gradient(135deg, rgba(10, 10, 10, 0.92) 0%, rgba(26, 26, 26, 0.85) 50%, rgba(10, 10, 10, 0.92) 100%);
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
+.hero-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-        radial-gradient(ellipse at 20% 50%, rgba(201, 185, 154, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 50%, rgba(201, 185, 154, 0.05) 0%, transparent 50%);
-    pointer-events: none;
+    background: rgba(10, 10, 10, 0.65);
+    z-index: 1;
 }
 
 .hero-content {
@@ -465,29 +456,6 @@ ul {
     line-height: 1.1;
 }
 
-/* ---------- Introduction Section ---------- */
-.intro {
-    background-color: var(--color-off-white);
-}
-
-.intro-content {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.intro-content .elegant-divider {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.intro-text {
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--color-gray);
-    line-height: 1.9;
-}
-
 /* ---------- Services Sections ---------- */
 .services-grid {
     display: grid;
@@ -496,25 +464,15 @@ ul {
     align-items: center;
 }
 
-.services-grid.reverse {
-    direction: rtl;
+.services-grid.reverse .services-image {
+    order: 2;
 }
 
-.services-grid.reverse > * {
-    direction: ltr;
-}
-
-.image-frame {
-    position: relative;
-}
-
-.image-frame::before {
-    display: none;
+.services-grid.reverse .services-content {
+    order: 1;
 }
 
 .services-img {
-    position: relative;
-    z-index: 1;
     width: 100%;
     aspect-ratio: 4/5;
     object-fit: cover;
@@ -581,19 +539,8 @@ ul {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(10, 10, 10, 0.75);
+    background: rgba(10, 10, 10, 0.55);
     z-index: 1;
-}
-
-.wedding-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center, rgba(201, 185, 154, 0.06) 0%, transparent 60%);
-    pointer-events: none;
 }
 
 .wedding-content {
@@ -614,38 +561,6 @@ ul {
     color: var(--color-light-gray);
     line-height: 1.9;
     margin-bottom: 40px;
-}
-
-/* ---------- Quote Section ---------- */
-.quote-section {
-    background-color: var(--color-cream);
-    padding: var(--section-padding);
-}
-
-.quote-content {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-blockquote p {
-    font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    font-weight: 400;
-    font-style: italic;
-    color: var(--color-charcoal);
-    line-height: 1.5;
-    margin-bottom: 24px;
-}
-
-blockquote cite {
-    font-family: var(--font-body);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--color-gold-dark);
-    font-style: normal;
 }
 
 /* ---------- CTA Banner ---------- */
@@ -690,22 +605,12 @@ blockquote cite {
     align-items: center;
 }
 
-.about-frame::before {
-    display: none;
-}
-
-.about-placeholder {
-    position: relative;
-    z-index: 1;
+.about-img {
+    width: 100%;
     aspect-ratio: 3/4;
-    background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-dark) 100%);
-    color: var(--color-gold-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-style: italic;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
 }
 
 .about-text p {
@@ -860,10 +765,6 @@ blockquote cite {
 }
 
 /* ---------- Contact Form ---------- */
-.contact-form-wrapper {
-    position: relative;
-}
-
 .contact-form {
     background-color: var(--color-white);
     padding: 50px;
@@ -930,45 +831,6 @@ blockquote cite {
     margin-top: 10px;
 }
 
-/* Form Success State */
-.form-success {
-    display: none;
-    text-align: center;
-    padding: 80px 40px;
-    background-color: var(--color-white);
-    border: 1px solid rgba(201, 185, 154, 0.2);
-}
-
-.form-success.show {
-    display: block;
-}
-
-.form-success .success-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 24px;
-    color: var(--color-gold);
-}
-
-.form-success .success-icon svg {
-    width: 100%;
-    height: 100%;
-}
-
-.form-success h3 {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--color-black);
-    margin-bottom: 12px;
-}
-
-.form-success p {
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--color-gray);
-}
-
 /* ---------- Footer ---------- */
 .footer {
     background-color: var(--color-black);
@@ -993,6 +855,34 @@ blockquote cite {
     font-weight: 300;
     color: var(--color-light-gray);
     line-height: 1.6;
+}
+
+.footer-social {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    color: var(--color-light-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 8px;
+    transition: var(--transition-fast);
+}
+
+.social-link:hover {
+    color: var(--color-white);
+    border-color: var(--color-gold);
+}
+
+.social-link svg {
+    width: 100%;
+    height: 100%;
 }
 
 .footer h4 {
@@ -1063,7 +953,6 @@ blockquote cite {
     }
 }
 
-/* Scroll Reveal */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -1091,8 +980,9 @@ blockquote cite {
         gap: 50px;
     }
 
-    .services-grid.reverse {
-        direction: ltr;
+    .services-grid.reverse .services-image,
+    .services-grid.reverse .services-content {
+        order: unset;
     }
 
     .contact-grid {
@@ -1122,7 +1012,6 @@ blockquote cite {
         --container-padding: 0 24px;
     }
 
-    /* Mobile Navigation */
     .nav-toggle {
         display: flex;
     }
@@ -1150,7 +1039,6 @@ blockquote cite {
         letter-spacing: 3px;
     }
 
-    /* Hero */
     .hero {
         min-height: 600px;
     }
@@ -1173,7 +1061,6 @@ blockquote cite {
         display: none;
     }
 
-    /* Page Hero */
     .page-hero {
         height: 50vh;
         min-height: 300px;
@@ -1184,30 +1071,15 @@ blockquote cite {
         min-height: 280px;
     }
 
-    /* Services */
-    .image-frame::before {
-        top: -8px;
-        left: -8px;
-        right: 8px;
-        bottom: 8px;
-    }
-
-    .image-placeholder {
-        aspect-ratio: 16/10;
-    }
-
-    /* Contact Form */
     .contact-form {
         padding: 30px 24px;
     }
 
-    /* Footer */
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
 
-    /* CTA */
     .cta-buttons {
         flex-direction: column;
         align-items: center;
@@ -1230,9 +1102,5 @@ blockquote cite {
 
     .section-title {
         font-size: 1.8rem;
-    }
-
-    blockquote p {
-        font-size: 1.3rem;
     }
 }
