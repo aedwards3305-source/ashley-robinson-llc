@@ -890,7 +890,9 @@ blockquote cite {
 }
 
 .footer-logo {
-    height: 120px;
+    height: 160px;
+    width: auto;
+    max-width: none;
     margin-bottom: 24px;
 }
 
@@ -908,14 +910,14 @@ blockquote cite {
 }
 
 .social-link {
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     color: var(--color-light-gray);
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 8px;
+    padding: 9px;
     transition: var(--transition-fast);
 }
 
