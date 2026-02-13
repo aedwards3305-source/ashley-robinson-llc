@@ -80,26 +80,129 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ---- Contact Form: Pre-select service from URL params ----
-    const serviceSelect = document.getElementById('service');
-    if (serviceSelect) {
+    // ---- Multi-Step Questionnaire ----
+    const questionnaire = document.getElementById('questionnaire');
+    if (questionnaire) {
+        let currentStep = 1;
+        let selectedService = '';
+        const totalSteps = 4;
+        const progressBar = document.getElementById('q-progress-bar');
+        const stepLabel = document.getElementById('q-step-label');
+
+        const updateProgress = () => {
+            progressBar.style.width = (currentStep / totalSteps * 100) + '%';
+            stepLabel.textContent = `Step ${currentStep} of ${totalSteps}`;
+        };
+
+        const goToStep = (step) => {
+            document.querySelectorAll('.q-step').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step-${step}`).classList.add('active');
+            currentStep = step;
+            updateProgress();
+            questionnaire.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        };
+
+        // Step 1: Service card selection
+        document.querySelectorAll('.q-card').forEach(card => {
+            card.addEventListener('click', () => {
+                selectedService = card.dataset.service;
+                document.getElementById('h-service').value = selectedService;
+
+                // Show correct service fields
+                document.querySelectorAll('.q-service-fields').forEach(f => f.classList.remove('active'));
+                document.getElementById(`fields-${selectedService}`).classList.add('active');
+
+                goToStep(2);
+            });
+        });
+
+        // Auto-select from URL params
         const params = new URLSearchParams(window.location.search);
         const serviceParam = params.get('service');
+        if (serviceParam && ['consulting', 'fitting', 'wedding'].includes(serviceParam)) {
+            const card = document.querySelector(`.q-card[data-service="${serviceParam}"]`);
+            if (card) card.click();
+        }
 
-        if (serviceParam) {
-            const optionMap = {
-                'consulting': 'consulting',
-                'fitting': 'fitting',
-                'wedding': 'wedding'
+        // Back buttons
+        document.getElementById('back-2').addEventListener('click', () => goToStep(1));
+        document.getElementById('back-3').addEventListener('click', () => goToStep(2));
+        document.getElementById('back-4').addEventListener('click', () => goToStep(3));
+
+        // Step 2 → 3: Collect service-specific data
+        document.getElementById('next-2').addEventListener('click', () => {
+            if (selectedService === 'consulting') {
+                document.getElementById('h-business-name').value = document.getElementById('business-name').value;
+                document.getElementById('h-business-stage').value = document.getElementById('business-stage').value;
+                const checked = [...document.querySelectorAll('#fields-consulting .q-checkbox input:checked')].map(c => c.value);
+                document.getElementById('h-help-areas').value = checked.join(', ');
+            } else if (selectedService === 'fitting') {
+                document.getElementById('h-occasion').value = document.getElementById('occasion').value;
+                document.getElementById('h-timeline').value = document.getElementById('timeline').value;
+                const stylePref = document.querySelector('input[name="style-pref"]:checked');
+                document.getElementById('h-style-pref').value = stylePref ? stylePref.value : '';
+            } else if (selectedService === 'wedding') {
+                document.getElementById('h-wedding-date').value = document.getElementById('wedding-date').value;
+                document.getElementById('h-party-size').value = document.getElementById('party-size').value;
+                document.getElementById('h-wedding-vision').value = document.getElementById('wedding-vision').value;
+            }
+            goToStep(3);
+        });
+
+        // Step 3 → 4: Collect contact info and build review
+        document.getElementById('next-3').addEventListener('click', () => {
+            const name = document.getElementById('q-name').value.trim();
+            const email = document.getElementById('q-email').value.trim();
+
+            if (!name || !email) {
+                if (!name) document.getElementById('q-name').focus();
+                else document.getElementById('q-email').focus();
+                return;
+            }
+
+            document.getElementById('h-name').value = name;
+            document.getElementById('h-email').value = email;
+            document.getElementById('h-phone').value = document.getElementById('q-phone').value;
+            document.getElementById('h-message').value = document.getElementById('q-message').value;
+
+            // Build review
+            const serviceNames = { consulting: 'Strategic Consulting', fitting: 'Custom Suit Design', wedding: 'Wedding Styling' };
+            let reviewHTML = '';
+
+            const addRow = (label, value) => {
+                if (value) reviewHTML += `<div class="q-review-group"><div class="q-review-label">${label}</div><div class="q-review-value">${value}</div></div>`;
             };
 
-            if (optionMap[serviceParam]) {
-                serviceSelect.value = optionMap[serviceParam];
-            }
-        }
-    }
+            addRow('Service', serviceNames[selectedService]);
+            addRow('Name', name);
+            addRow('Email', email);
+            if (document.getElementById('q-phone').value) addRow('Phone', document.getElementById('q-phone').value);
 
-    // ---- Contact Form: formsubmit.co handles submission natively ----
+            if (selectedService === 'consulting') {
+                addRow('Business', document.getElementById('business-name').value);
+                addRow('Stage', document.getElementById('business-stage').value);
+                addRow('Help With', document.getElementById('h-help-areas').value);
+            } else if (selectedService === 'fitting') {
+                addRow('Occasion', document.getElementById('occasion').value);
+                addRow('Timeline', document.getElementById('timeline').value);
+                addRow('Style', document.getElementById('h-style-pref').value);
+            } else if (selectedService === 'wedding') {
+                addRow('Wedding Date', document.getElementById('wedding-date').value);
+                addRow('Party Size', document.getElementById('party-size').value);
+                addRow('Vision', document.getElementById('wedding-vision').value);
+            }
+
+            if (document.getElementById('q-message').value) addRow('Additional Notes', document.getElementById('q-message').value);
+
+            document.getElementById('q-review').innerHTML = reviewHTML;
+            goToStep(4);
+        });
+
+        // Step 4: Submit
+        document.getElementById('submit-btn').addEventListener('click', () => {
+            document.getElementById('contact-form').submit();
+        });
+    }
 
     // ---- Parallax-style subtle movement on hero ----
     const hero = document.querySelector('.hero');

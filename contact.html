@@ -34,61 +34,243 @@
         </div>
     </nav>
 
-    <!-- Contact Section -->
+    <!-- Multi-Step Questionnaire -->
     <section class="contact-section section">
         <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info reveal reveal-left">
-                    <div class="section-label">Get in Touch</div>
-                    <h2 class="section-title">Start Your Elevation</h2>
-                    <div class="elegant-divider"></div>
-                    <p>
-                        Whether you're looking to refine your business strategy, design a custom suit, or coordinate styling for your wedding, I'd love to hear from you. Fill out the form and I'll be in touch within 48 hours.
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <div class="contact-icon">
+            <div class="questionnaire" id="questionnaire">
+
+                <!-- Progress Bar -->
+                <div class="q-progress">
+                    <div class="q-progress-bar" id="q-progress-bar"></div>
+                </div>
+                <div class="q-step-label" id="q-step-label">Step 1 of 4</div>
+
+                <!-- Hidden form for submission -->
+                <form id="contact-form" action="https://formsubmit.co/info@ashleyrobinson.com" method="POST">
+                    <input type="hidden" name="_subject" value="New inquiry from Ashley Robinson website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="">
+                    <input type="text" name="_honey" style="display:none">
+
+                    <!-- All form data collected via hidden inputs -->
+                    <input type="hidden" name="service" id="h-service">
+                    <input type="hidden" name="name" id="h-name">
+                    <input type="hidden" name="email" id="h-email">
+                    <input type="hidden" name="phone" id="h-phone">
+                    <!-- Consulting fields -->
+                    <input type="hidden" name="business_name" id="h-business-name">
+                    <input type="hidden" name="business_stage" id="h-business-stage">
+                    <input type="hidden" name="help_areas" id="h-help-areas">
+                    <!-- Fitting fields -->
+                    <input type="hidden" name="occasion" id="h-occasion">
+                    <input type="hidden" name="timeline" id="h-timeline">
+                    <input type="hidden" name="style_preference" id="h-style-pref">
+                    <!-- Wedding fields -->
+                    <input type="hidden" name="wedding_date" id="h-wedding-date">
+                    <input type="hidden" name="party_size" id="h-party-size">
+                    <input type="hidden" name="wedding_vision" id="h-wedding-vision">
+                    <!-- Shared -->
+                    <input type="hidden" name="message" id="h-message">
+                </form>
+
+                <!-- Step 1: Choose Service -->
+                <div class="q-step active" id="step-1">
+                    <div class="q-header">
+                        <div class="section-label">Get Started</div>
+                        <h2 class="section-title">What Can I Help You With?</h2>
+                        <div class="elegant-divider centered"></div>
+                    </div>
+                    <div class="q-cards">
+                        <button class="q-card" data-service="consulting">
+                            <div class="q-card-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    <path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
                                 </svg>
                             </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@ashleyrobinson.com</p>
+                            <h3>Strategic Consulting</h3>
+                            <p>Refine your vision, structure your ideas, and build aligned strategies.</p>
+                        </button>
+                        <button class="q-card" data-service="fitting">
+                            <div class="q-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2L9 7H4l3.5 4L6 17l6-3 6 3-1.5-6L20 7h-5l-3-5z"/>
+                                </svg>
+                            </div>
+                            <h3>Custom Suit Design</h3>
+                            <p>Bespoke suits designed for precision, presence, and distinction.</p>
+                        </button>
+                        <button class="q-card" data-service="wedding">
+                            <div class="q-card-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+                                </svg>
+                            </div>
+                            <h3>Wedding Styling</h3>
+                            <p>Coordinated wedding suit styling for your special day.</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Service-Specific Questions -->
+                <div class="q-step" id="step-2">
+
+                    <!-- Consulting Questions -->
+                    <div class="q-service-fields" id="fields-consulting">
+                        <div class="q-header">
+                            <div class="section-label">Consulting</div>
+                            <h2 class="section-title">Tell Me About Your Business</h2>
+                            <div class="elegant-divider centered"></div>
+                        </div>
+                        <div class="q-form-grid">
+                            <div class="form-group">
+                                <label for="business-name">Business Name</label>
+                                <input type="text" id="business-name" placeholder="Your business or brand name">
+                            </div>
+                            <div class="form-group">
+                                <label for="business-stage">Where Are You Now?</label>
+                                <select id="business-stage">
+                                    <option value="" disabled selected>Select your stage</option>
+                                    <option value="Idea stage">Idea stage &mdash; I have a vision but need direction</option>
+                                    <option value="Just starting">Just starting &mdash; Launching or recently launched</option>
+                                    <option value="Growing">Growing &mdash; Ready to scale and refine</option>
+                                    <option value="Established">Established &mdash; Looking to rebrand or pivot</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>What Do You Need Help With?</label>
+                                <div class="q-checkbox-group">
+                                    <label class="q-checkbox"><input type="checkbox" value="Business strategy"> Business strategy</label>
+                                    <label class="q-checkbox"><input type="checkbox" value="Brand clarity & positioning"> Brand clarity &amp; positioning</label>
+                                    <label class="q-checkbox"><input type="checkbox" value="Offer development"> Offer development</label>
+                                    <label class="q-checkbox"><input type="checkbox" value="Vision mapping"> Vision mapping</label>
+                                    <label class="q-checkbox"><input type="checkbox" value="Accountability support"> Accountability support</label>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Fitting Questions -->
+                    <div class="q-service-fields" id="fields-fitting">
+                        <div class="q-header">
+                            <div class="section-label">Custom Suit</div>
+                            <h2 class="section-title">Design Your Vision</h2>
+                            <div class="elegant-divider centered"></div>
+                        </div>
+                        <div class="q-form-grid">
+                            <div class="form-group">
+                                <label for="occasion">What's the Occasion?</label>
+                                <select id="occasion">
+                                    <option value="" disabled selected>Select occasion</option>
+                                    <option value="Wedding">Wedding</option>
+                                    <option value="Corporate / Executive">Corporate / Executive</option>
+                                    <option value="Special event">Special event or celebration</option>
+                                    <option value="Everyday luxury">Everyday luxury</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="timeline">When Do You Need It?</label>
+                                <select id="timeline">
+                                    <option value="" disabled selected>Select timeline</option>
+                                    <option value="Within 1 month">Within 1 month</option>
+                                    <option value="1-3 months">1&ndash;3 months</option>
+                                    <option value="3-6 months">3&ndash;6 months</option>
+                                    <option value="No rush">No rush &mdash; just exploring</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Style Preference</label>
+                                <div class="q-radio-group">
+                                    <label class="q-radio"><input type="radio" name="style-pref" value="Classic & timeless"> Classic &amp; timeless</label>
+                                    <label class="q-radio"><input type="radio" name="style-pref" value="Modern & tailored"> Modern &amp; tailored</label>
+                                    <label class="q-radio"><input type="radio" name="style-pref" value="Bold & statement"> Bold &amp; statement</label>
+                                    <label class="q-radio"><input type="radio" name="style-pref" value="Not sure yet"> Not sure yet &mdash; help me decide</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wedding Questions -->
+                    <div class="q-service-fields" id="fields-wedding">
+                        <div class="q-header">
+                            <div class="section-label">Wedding</div>
+                            <h2 class="section-title">Your Special Day</h2>
+                            <div class="elegant-divider centered"></div>
+                        </div>
+                        <div class="q-form-grid">
+                            <div class="form-group">
+                                <label for="wedding-date">Wedding Date</label>
+                                <input type="date" id="wedding-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="party-size">How Many People Need Styling?</label>
+                                <select id="party-size">
+                                    <option value="" disabled selected>Select party size</option>
+                                    <option value="Just me">Just me</option>
+                                    <option value="2-4 people">2&ndash;4 people</option>
+                                    <option value="5-8 people">5&ndash;8 people</option>
+                                    <option value="9+ people">9+ people</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="wedding-vision">Describe Your Vision</label>
+                                <textarea id="wedding-vision" rows="3" placeholder="Colors, style, mood, inspiration..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="q-nav">
+                        <button class="btn btn-outline q-back" id="back-2">Back</button>
+                        <button class="btn btn-primary q-next" id="next-2">Continue</button>
+                    </div>
                 </div>
-                <div class="contact-form-wrapper reveal reveal-right">
-                    <form class="contact-form" id="contact-form" action="https://formsubmit.co/info@ashleyrobinson.com" method="POST">
-                        <input type="hidden" name="_subject" value="New inquiry from Ashley Robinson website">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="">
-                        <input type="text" name="_honey" style="display:none">
+
+                <!-- Step 3: Contact Info -->
+                <div class="q-step" id="step-3">
+                    <div class="q-header">
+                        <div class="section-label">Almost There</div>
+                        <h2 class="section-title">Your Contact Information</h2>
+                        <div class="elegant-divider centered"></div>
+                    </div>
+                    <div class="q-form-grid q-form-narrow">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                            <label for="q-name">Full Name</label>
+                            <input type="text" id="q-name" required placeholder="Your full name">
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            <label for="q-email">Email</label>
+                            <input type="email" id="q-email" required placeholder="your@email.com">
                         </div>
                         <div class="form-group">
-                            <label for="service">Service Interested In</label>
-                            <select id="service" name="service" required>
-                                <option value="" disabled selected>Select a service</option>
-                                <option value="consulting">Strategic Consulting</option>
-                                <option value="fitting">Custom Suit Design</option>
-                                <option value="wedding">Wedding Styling</option>
-                            </select>
+                            <label for="q-phone">Phone <span class="optional">(optional)</span></label>
+                            <input type="tel" id="q-phone" placeholder="(555) 123-4567">
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your vision..."></textarea>
+                        <div class="form-group full-width">
+                            <label for="q-message">Anything Else? <span class="optional">(optional)</span></label>
+                            <textarea id="q-message" rows="3" placeholder="Any additional details or questions..."></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                    </form>
+                    </div>
+                    <div class="q-nav">
+                        <button class="btn btn-outline q-back" id="back-3">Back</button>
+                        <button class="btn btn-primary q-next" id="next-3">Review &amp; Submit</button>
+                    </div>
                 </div>
+
+                <!-- Step 4: Review & Submit -->
+                <div class="q-step" id="step-4">
+                    <div class="q-header">
+                        <div class="section-label">Review</div>
+                        <h2 class="section-title">Confirm Your Details</h2>
+                        <div class="elegant-divider centered"></div>
+                    </div>
+                    <div class="q-review" id="q-review">
+                        <!-- Populated by JS -->
+                    </div>
+                    <div class="q-nav">
+                        <button class="btn btn-outline q-back" id="back-4">Back</button>
+                        <button class="btn btn-primary q-next" id="submit-btn">Submit Inquiry</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>

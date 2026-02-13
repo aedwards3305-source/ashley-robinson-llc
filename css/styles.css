@@ -759,71 +759,142 @@ blockquote cite {
     padding-top: 160px;
 }
 
-.contact-grid {
+/* ---------- Questionnaire ---------- */
+.questionnaire {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.q-progress {
+    width: 100%;
+    height: 3px;
+    background: var(--color-light-gray);
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.q-progress-bar {
+    height: 100%;
+    width: 25%;
+    background: var(--color-gold);
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.q-step-label {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--color-light-gray);
+    margin-bottom: 50px;
+}
+
+.q-header {
+    margin-bottom: 50px;
+}
+
+.q-header .elegant-divider.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Steps */
+.q-step {
+    display: none;
+    animation: fadeUp 0.5s ease;
+}
+
+.q-step.active {
+    display: block;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Service Cards (Step 1) */
+.q-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-}
-
-.contact-info p {
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--color-gray);
-    line-height: 1.8;
-    margin-bottom: 40px;
-}
-
-.contact-details {
-    display: flex;
-    flex-direction: column;
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
 }
 
-.contact-detail {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
+.q-card {
+    background: var(--color-white);
+    border: 1px solid rgba(201, 185, 154, 0.2);
+    padding: 40px 28px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-align: center;
+    font-family: inherit;
+    color: inherit;
 }
 
-.contact-icon {
-    width: 24px;
-    height: 24px;
+.q-card:hover {
+    border-color: var(--color-gold);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+
+.q-card-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 20px;
     color: var(--color-gold);
-    flex-shrink: 0;
-    margin-top: 2px;
 }
 
-.contact-icon svg {
+.q-card-icon svg {
     width: 100%;
     height: 100%;
 }
 
-.contact-detail h4 {
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.q-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 400;
     color: var(--color-black);
-    margin-bottom: 4px;
+    margin-bottom: 10px;
 }
 
-.contact-detail p {
-    font-size: 0.95rem;
+.q-card p {
+    font-size: 0.85rem;
+    font-weight: 300;
     color: var(--color-gray);
-    margin-bottom: 0;
+    line-height: 1.6;
 }
 
-/* ---------- Contact Form ---------- */
-.contact-form {
-    background-color: var(--color-white);
-    padding: 50px;
-    border: 1px solid rgba(201, 185, 154, 0.2);
+/* Service-Specific Fields (Step 2) */
+.q-service-fields {
+    display: none;
 }
 
+.q-service-fields.active {
+    display: block;
+}
+
+.q-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 40px;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.q-form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+.q-form-narrow {
+    max-width: 500px;
+}
+
+/* Form Elements */
 .form-group {
-    margin-bottom: 28px;
+    margin-bottom: 8px;
 }
 
 .form-group label {
@@ -834,6 +905,14 @@ blockquote cite {
     text-transform: uppercase;
     color: var(--color-charcoal);
     margin-bottom: 10px;
+}
+
+.form-group label .optional {
+    font-weight: 300;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--color-light-gray);
+    font-size: 0.75rem;
 }
 
 .form-group input,
@@ -875,11 +954,95 @@ blockquote cite {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 100px;
 }
 
-.contact-form .btn {
-    margin-top: 10px;
+/* Checkbox & Radio Groups */
+.q-checkbox-group,
+.q-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.q-checkbox,
+.q-radio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--color-charcoal);
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.q-checkbox input,
+.q-radio input {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: 1px solid var(--color-light-gray);
+    border-bottom: 1px solid var(--color-light-gray);
+    cursor: pointer;
+    accent-color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+/* Navigation Buttons */
+.q-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    gap: 16px;
+}
+
+.q-nav .q-back {
+    border-color: var(--color-light-gray);
+    color: var(--color-gray);
+}
+
+.q-nav .q-back:hover {
+    border-color: var(--color-charcoal);
+    color: var(--color-charcoal);
+}
+
+/* Review Step */
+.q-review {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.q-review-group {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(201, 185, 154, 0.15);
+}
+
+.q-review-group:first-child {
+    padding-top: 0;
+}
+
+.q-review-group:last-child {
+    border-bottom: none;
+}
+
+.q-review-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-gold-dark);
+    margin-bottom: 6px;
+}
+
+.q-review-value {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--color-charcoal);
+    line-height: 1.6;
 }
 
 /* ---------- Footer ---------- */
@@ -1124,8 +1287,17 @@ blockquote cite {
         min-height: 280px;
     }
 
-    .contact-form {
-        padding: 30px 24px;
+    .q-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .q-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-section {
+        padding-top: 120px;
     }
 
     .footer-grid {
